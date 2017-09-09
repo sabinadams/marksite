@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { RoundButtonMenu } from '../shared/components/round-button-menu/round-button-menu';
+// import { RoundButtonMenu } from '../shared/components/round-button-menu/round-button-menu';
 import { TabsPage } from '../shared/components/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AppContainer } from '../shared/components/app-container/app-container';
@@ -27,7 +27,7 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
     TabsPage,
     LoginPage,
     AppContainer,
-    RoundButtonMenu
+    // RoundButtonMenu
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,7 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
     TabsPage,
     AppContainer,
     LoginPage,
-    RoundButtonMenu
+    // RoundButtonMenu
   ],
   providers: [
     StatusBar,
