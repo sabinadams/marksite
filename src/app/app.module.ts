@@ -29,7 +29,7 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {tabsPlacement: 'top'})
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'top', tabsHighlight: true})
   ],
   bootstrap: [IonicApp],
   entryComponents: [

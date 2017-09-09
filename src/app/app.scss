@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,35 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+$background-color:#25262f;
+$secondary-color: #333542;
+$highlight-color: #5298af;
+.scroll-content {
+    background-color: $background-color;
+}
+
+.tabs-md .tabbar,
+.tabs-ios .tabbar {
+    background: $secondary-color;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.tabs-ios .tabbar {
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.tabs-md[tabsHighlight=true] .tab-highlight,
+.tabs-ios[tabsHighlight=true] .tab-highlight {
+    background-color: $highlight-color;
+}
+
+.tabs-md .tab-button-icon,
+.tabs-ios .tab-button-icon {
+    color: #798194;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: $highlight-color;
+}
