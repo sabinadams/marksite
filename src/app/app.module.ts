@@ -38,8 +38,8 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
     ContactPage,
     HomePage,
     TabsPage,
-    LoginPage,
-    AppContainer
+    AppContainer,
+    LoginPage
   ],
   providers: [
     StatusBar,
