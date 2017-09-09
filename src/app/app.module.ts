@@ -16,7 +16,7 @@ import { AuthService } from '../shared/services/auth-service';
 import { BaseService } from '../shared/services/base-service';
 import { HttpClient } from '../shared/services/http-interceptor';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
-import { MapPage } from '../pages/map/map';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { MapPage } from '../pages/map/map';
     TabsPage,
     LoginPage,
     AppContainer,
-    MapPage
+    
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,6 @@ import { MapPage } from '../pages/map/map';
     SettingsPage,
     TabsPage,
     AppContainer,
-    MapPage,
     LoginPage
   ],
   providers: [
@@ -52,6 +51,7 @@ import { MapPage } from '../pages/map/map';
     HttpClient,
     AuthService,
     BaseService,
+    GoogleMaps,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
