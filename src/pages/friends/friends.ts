@@ -4,10 +4,10 @@ import { LoginPage } from '../login/login';
 import { AuthGuard } from '../../shared/services/auth-guard';
 import { AuthService } from '../../shared/services/auth-service';
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-friends',
+  templateUrl: 'friends.html'
 })
-export class HomePage {
+export class FriendsPage {
 
   constructor( public navCtrl: NavInterceptor, public _authService: AuthService ) {
 

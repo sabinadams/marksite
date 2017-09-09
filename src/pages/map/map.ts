@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'map',
+  templateUrl: 'map.html'
 })
-export class ContactPage {
+export class MapPage {
 
   constructor() {
 

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../../../pages/about/about';
-import { ContactPage } from '../../../pages/contact/contact';
-import { HomePage } from '../../../pages/home/home';
+import { SettingsPage } from '../../../pages/settings/settings';
+import { MarkersPage } from '../../../pages/markers/markers';
+import { FriendsPage } from '../../../pages/friends/friends';
+import { MapPage } from '../../../pages/map/map';
 
 @Component({
   selector: 'tabs',
@@ -10,9 +11,10 @@ import { HomePage } from '../../../pages/home/home';
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root = FriendsPage;
+  tab2Root = MarkersPage;
+  tab3Root = MapPage;
+  tab4Root = SettingsPage;
 
   constructor() {
 

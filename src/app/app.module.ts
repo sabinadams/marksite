@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-// import { RoundButtonMenu } from '../shared/components/round-button-menu/round-button-menu';
+import { SettingsPage } from '../pages/settings/settings';
+import { MarkersPage } from '../pages/markers/markers';
+import { FriendsPage } from '../pages/friends/friends';
 import { TabsPage } from '../shared/components/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AppContainer } from '../shared/components/app-container/app-container';
@@ -17,17 +16,18 @@ import { AuthService } from '../shared/services/auth-service';
 import { BaseService } from '../shared/services/base-service';
 import { HttpClient } from '../shared/services/http-interceptor';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
+import { MapPage } from '../pages/map/map';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    MarkersPage,
+    FriendsPage,
+    SettingsPage,
     TabsPage,
     LoginPage,
     AppContainer,
-    // RoundButtonMenu
+    MapPage
   ],
   imports: [
     BrowserModule,
@@ -36,13 +36,13 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
+    MarkersPage,
+    FriendsPage,
+    SettingsPage,
     TabsPage,
     AppContainer,
-    LoginPage,
-    // RoundButtonMenu
+    MapPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
