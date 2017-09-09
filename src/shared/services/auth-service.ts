@@ -1,16 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base-service';
+import { LoginPage } from '../../pages/login/login';
+import { NavInterceptor } from './nav-interceptor';
 @Injectable()
 export class AuthService extends BaseService {
 
- constructor() { super(); }
+ constructor( public navCtrl: NavInterceptor ) { super(); }
 
  login() {
-    console.log("Loggin' In");
+    localStorage.setItem('TestToken', 'TestToken');
+    return true;
  }
 
  logout() {
-     console.log("Loggin' Out");
+     localStorage.removeItem('TestToken');
+     // Could move navigation to controller
+     this.navCtrl.navigateUnprotected( LoginPage );
  }
-
+ 
 }

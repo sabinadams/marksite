@@ -1,23 +1,26 @@
 import { Component } from '@angular/core';
 import { NavInterceptor } from '../../shared/services/nav-interceptor';
-import { AppContainer } from '../app-container/app-container';
+import { AppContainer } from '../../pages/app-container/app-container';
 import { AuthService } from '../../shared/services/auth-service';
+import { AuthGuard } from '../../shared/services/auth-guard';
+
 @Component({
   selector: 'login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
 
-  constructor( public navCtrl: NavInterceptor, public _authService: AuthService ) {
+  constructor( public navCtrl: NavInterceptor, public _authService: AuthService, public _authGuard: AuthGuard ) {
     // If you are already logged in, go to home page
-    if( localStorage.getItem('TestToken') == 'TestToken') {
+    if( this._authGuard.authenticated()) {
       this.navCtrl.navigate( AppContainer );
     }
   }
   
   // Send to Home Page
   login() {
-    this.navCtrl.navigate( AppContainer );
-    this._authService.login();
+    var loggedIn = this._authService.login();
+    console.log(loggedIn)
+    if ( loggedIn ) this.navCtrl.navigate( AppContainer );
   }
 }

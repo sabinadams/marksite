@@ -2,25 +2,19 @@ import { Component } from '@angular/core';
 import { NavInterceptor } from '../../shared/services/nav-interceptor';
 import { LoginPage } from '../login/login';
 import { AuthGuard } from '../../shared/services/auth-guard';
-
+import { AuthService } from '../../shared/services/auth-service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
 
-  constructor( public navCtrl: NavInterceptor) {
+  constructor( public navCtrl: NavInterceptor, public _authService: AuthService ) {
 
   }
   
   logout() {
-    console.log("Logging out");
-    localStorage.removeItem("TestToken");
-    this.navCtrl.navigate(LoginPage);
+    this._authService.logout();
   }
-
-  justLoginPage() {
-    console.log("Just Login")
-    this.navCtrl.navigate(LoginPage);
-  }
+  
 }

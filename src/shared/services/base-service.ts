@@ -9,10 +9,8 @@ export class BaseService {
         api: isDevMode ? 'localhost:6969' : 'node.gamr.co'
     };
 
-    constructor(){}
+    constructor(){
 
-    // public getUser() {
-    //     return JSON.parse(localStorage.getItem('user'));
-    // }
+    }
 
 }

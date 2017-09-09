@@ -12,16 +12,6 @@ import { NavInterceptor } from '../../shared/services/nav-interceptor';
 export class AppContainer {
     rootPage:any = TabsPage;
     
-    constructor( public navCtrl: NavController, public navIntercept: NavInterceptor) {
-        navIntercept.$navObserver.subscribe( page => {
-            this.navigate( page );
-        })
-    }
-
-    // Custom navigate implementation
-    navigate( page: any ) {
-        console.log("Navigating")
-        this.navCtrl.push( page );
-    }
+    constructor( public navCtrl: NavController, public navIntercept: NavInterceptor) {}
 
 }
