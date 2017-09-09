@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
-import { AppContainer } from '../pages/app-container/app-container';
+import { AppContainer } from '../shared/components/app-container/app-container';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
 import { NavController } from 'ionic-angular';
 

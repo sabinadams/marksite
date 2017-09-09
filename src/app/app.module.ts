@@ -6,9 +6,10 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { RoundButtonMenu } from '../shared/components/round-button-menu/round-button-menu';
+import { TabsPage } from '../shared/components/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { AppContainer } from '../pages/app-container/app-container';
+import { AppContainer } from '../shared/components/app-container/app-container';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthGuard } from '../shared/services/auth-guard';
@@ -25,7 +26,8 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
     HomePage,
     TabsPage,
     LoginPage,
-    AppContainer
+    AppContainer,
+    RoundButtonMenu
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
     HomePage,
     TabsPage,
     AppContainer,
-    LoginPage
+    LoginPage,
+    RoundButtonMenu
   ],
   providers: [
     StatusBar,

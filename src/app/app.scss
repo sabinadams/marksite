@@ -22,7 +22,7 @@ $highlight-color: #5298af;
 .tabs-md .tabbar,
 .tabs-ios .tabbar {
     background: $secondary-color;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid $background-color !important;
 }
 
 .tabs-ios .tabbar {

@@ -1,0 +1,15 @@
+@import '../../../app/app.scss';
+.round-btn-container {
+    background: transparent;
+}
+
+.round-button {
+    position: absolute;
+    top: -25px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    right: calc(50% - 25px);
+    background: $secondary-color;
+    // box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
