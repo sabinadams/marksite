@@ -22,7 +22,6 @@ export class MyApp implements OnInit {
       splashScreen.hide();
       // Subscribes to the nav stream. Handles navigation after middleware authorizes
       navInt.$navObserver.subscribe( page => {
-          console.log(page)
           this.navigate( page );
       })
     });

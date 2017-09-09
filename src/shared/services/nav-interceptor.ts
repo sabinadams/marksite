@@ -21,6 +21,7 @@ export class NavInterceptor {
       }
   }
 
+  // For routing that shouldn't use authorization (Log out transition to login page)
   navigateUnprotected( page: any ) {
     this.navStream.next( page );
   }
