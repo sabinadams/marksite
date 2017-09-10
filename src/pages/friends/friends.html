@@ -1,12 +1,17 @@
 <ion-content (ionScroll)="scrollHandler($event)">
-    <ion-searchbar [(ngModel)]="friendQuery"></ion-searchbar>
+    <ion-fab top right>
+        <button ion-fab mini style="background:transparent; box-shadow:none;"><ion-icon name="search"></ion-icon></button>
+        <ion-fab-list side="left">
+            <ion-searchbar [(ngModel)]="friendQuery" style="box-shadow:0 2px 4px rgba(0,0,0,0.2)"></ion-searchbar>
+        </ion-fab-list>
+    </ion-fab>
     <ion-fab right bottom *ngIf="yPos != 0">
         <button ion-fab color="dark" (click)="scrollToTop()"><ion-icon name="arrow-up"></ion-icon></button>
     </ion-fab>
     <div class="content-container">
         <ion-list id="friends-list">
             <ion-item-sliding *ngFor="let friend of friends | friendFilter:friendQuery">
-                <ion-item>
+                <ion-item [ngStyle]="{'border-left':'8px solid ' + friend.color}">
                     <ion-avatar item-start>
                         <img [src]="friend.image">
                     </ion-avatar>
