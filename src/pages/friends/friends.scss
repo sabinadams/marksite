@@ -11,15 +11,26 @@ ion-card-content,
 ion-avatar,
 .item-ios,
 .item-md {
-    background: $secondary-color;
-    padding-left: 0;
+    background: $background-color;
+    padding-left: 2px;
 }
 
-.card-md,
-.card-ios {
-    border-radius: 0;
-}
-
+// .card-content-md,
+// .card-content-ios {
+//     padding: 10px;
+// }
+// .card-md,
+// .card-ios {
+//     border-radius: 0;
+//     margin: 0;
+//     width: 100%;
+// }
+// .col {
+//     padding: 3px;
+// }
+// .grid {
+//     padding: 8px;
+// }
 .item-ios ion-avatar ion-img,
 .item-ios ion-avatar img,
 .item-md ion-avatar ion-img,
@@ -29,6 +40,57 @@ ion-avatar,
     height: 50px;
 }
 
-.searchbar-ios {
+.searchbar-ios,
+.searchbar-md {
     background: rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+.searchbar-md .searchbar-input,
+.searchbar-ios .searchbar-input {
+    box-shadow: none;
+    background: $secondary-color;
+}
+
+// .label-md,
+// .label-ios {
+//     margin: 0;
+// }
+.content-container {
+    padding: 8px;
+}
+
+.list-md .item-block .item-inner,
+.list-ios .item-block .item-inner {
+    border: 0;
+}
+
+ion-fab-list[side=left] {
+    margin: 0 66px 0 0;
+    right: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -webkit-flex-direction: row-reverse;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    width: 220px;
+}
+
+.list-md ion-item-options,
+.list-ios ion-item-options {
+    border-bottom: none;
+}
+
+.item-md h2,
+.item-ios h2 {
+    color: #d5d6d8;
+}
+
+.list-ios>.item-block:last-child,
+.list-ios>.item-wrapper:last-child .item-block {
+    border-bottom: 0;
+}
+
+.list-md ion-item-sliding {
+    background-color: $background-color;
 }

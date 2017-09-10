@@ -1,16 +1,29 @@
-<ion-content padding>
+<ion-content (ionScroll)="scrollHandler($event)">
     <ion-searchbar [(ngModel)]="friendQuery"></ion-searchbar>
-    <ion-card *ngFor="let friend of friends | friendFilter:friendQuery">
+    <ion-fab right bottom *ngIf="yPos != 0">
+        <button ion-fab color="dark" (click)="scrollToTop()"><ion-icon name="arrow-up"></ion-icon></button>
+    </ion-fab>
+    <div class="content-container">
+        <ion-list id="friends-list">
+            <ion-item-sliding *ngFor="let friend of friends | friendFilter:friendQuery">
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img [src]="friend.image">
+                    </ion-avatar>
+                    <h2>{{friend.name}}</h2>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger">
+                      <ion-icon name="mail"></ion-icon>
+                      Unfriend
+                    </button>
+                    <button ion-button color="primary">
+                    <ion-icon name="mail"></ion-icon>
+                    Send Location
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </div>
 
-        <ion-card-content>
-            <ion-item>
-                <ion-avatar item-start>
-                    <img [src]="friend.image">
-                </ion-avatar>
-                <h2>{{friend.name}}</h2>
-                <!-- <p>November 5, 1955</p> -->
-            </ion-item>
-        </ion-card-content>
-
-    </ion-card>
 </ion-content>

@@ -34,7 +34,7 @@ import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp, {tabsPlacement: 'top', tabsHighlight: true})
+    IonicModule.forRoot(MyApp, {tabsPlacement: 'top', tabsHighlight: true, mode:'md'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
