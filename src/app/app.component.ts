@@ -3,6 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
+import { MapPage } from '../pages/map/map';
 import { AppContainer } from '../shared/components/app-container/app-container';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
 import { NavController } from 'ionic-angular';
@@ -10,10 +11,10 @@ import { NavController } from 'ionic-angular';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp implements OnInit {
+export class MyApp  {
   @ViewChild('nav') nav: NavController;
-  rootPage:any = LoginPage;
-  mainPage:any = AppContainer;
+  rootPage:any;
+  mainPage:any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, navInt: NavInterceptor) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -23,20 +24,29 @@ export class MyApp implements OnInit {
       // Subscribes to the nav stream. Handles navigation after middleware authorizes
       navInt.$navObserver.subscribe( page => {
           this.navigate( page );
-      })
+      });
+      if( localStorage.getItem('TestToken') == null ) {
+        this.rootPage = LoginPage;
+      } else {
+        this.rootPage = AppContainer;
+      }
     });
   }
 
   // If you were previously logged in, bypass login screen
-  ngOnInit() {
-    if( localStorage.getItem('TestToken') == 'TestToken') {
-      this.rootPage = this.mainPage;
-    }
-  }
+  // ngOnInit() {
+  //   if( localStorage.getItem('TestToken') == 'TestToken') {
+  //     this.rootPage = this.mainPage;
+  //   }
+  // }
 
   // Custom navigate implementation
   navigate( page: any ) {
-      this.nav.push( page );
+      if( page == 'clear') {
+        this.nav.popToRoot();
+      } else {
+        this.nav.push( page );        
+      }
   }
 
 }

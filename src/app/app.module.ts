@@ -17,7 +17,9 @@ import { BaseService } from '../shared/services/base-service';
 import { HttpClient } from '../shared/services/http-interceptor';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
 import { GoogleMaps } from '@ionic-native/google-maps';
-
+import { MapPage } from '../pages/map/map';
+import { FriendsService } from '../pages/friends/friends-service';
+import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +29,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     TabsPage,
     LoginPage,
     AppContainer,
-    
+    MapPage,
+    FriendFilter
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     SettingsPage,
     TabsPage,
     AppContainer,
-    LoginPage
+    LoginPage,
+    MapPage
   ],
   providers: [
     StatusBar,
@@ -52,6 +56,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     AuthService,
     BaseService,
     GoogleMaps,
+    FriendsService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

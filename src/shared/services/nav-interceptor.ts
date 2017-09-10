@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthGuard } from './auth-guard';
+import { LoginPage } from '../../pages/login/login';
 @Injectable()
 export class NavInterceptor {
   private navStream: any;
@@ -25,4 +26,5 @@ export class NavInterceptor {
   navigateUnprotected( page: any ) {
     this.navStream.next( page );
   }
+
 }

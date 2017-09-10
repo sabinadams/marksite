@@ -1,36 +1,16 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavInterceptor } from '../../shared/services/nav-interceptor';
-import { LoginPage } from '../login/login';
-import { AuthGuard } from '../../shared/services/auth-guard';
-import { AuthService } from '../../shared/services/auth-service';
-
-import { GoogleMap, GoogleMapsEvent } from '@ionic-native/google-maps';
-
+import { Component, OnInit } from '@angular/core';
+import { FriendsService } from './friends-service';
 @Component({
   selector: 'page-friends',
   templateUrl: 'friends.html'
 })
-export class FriendsPage {
-  map: GoogleMap;;
-  constructor(public navCtrl: NavInterceptor, public _authService: AuthService ) {
+export class FriendsPage implements OnInit {
+  friends: any;
+  constructor(public _friendsService: FriendsService) {
   }
   
-  logout() {
-    this._authService.logout();
-  }
- 
-  ngAfterViewInit() {
-    this.initMap();
+  ngOnInit() {
+    this.friends = this._friendsService.getFriends();
   }
 
-  initMap(){
-  
-        this.map = new GoogleMap('map');
-    
-        this.map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-            console.log('Map is ready!');
-        });
-    
-    }
-  
 }
