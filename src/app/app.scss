@@ -13,8 +13,41 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 $background-color:#25262f;
-$secondary-color: #333542;
+$secondary-color: #21222b;
+$tertiary-color:#1e1f27;
 $highlight-color: #5298af;
+$light-font: #798194;
+.searchFab {
+    .fab[mini] {
+        background-color: rgba(0, 0, 0, 0.30);
+        border-radius: 0;
+        box-shadow: none;
+    }
+    ion-fab-list[side=left] {
+        margin: 0 66px 0 0;
+        right: 0;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -webkit-flex-direction: row-reverse;
+        -ms-flex-direction: row-reverse;
+        flex-direction: row-reverse;
+        width: 220px;
+    }
+    .searchbar-md {
+        background: rgba(0, 0, 0, 0);
+        padding: 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.30);
+    }
+    .searchbar-md .searchbar-input {
+        box-shadow: none;
+        background: $secondary-color;
+    }
+}
+
+._gmaps_cdv_ .nav-decor {
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .scroll-content {
     background-color: $background-color;
 }
@@ -38,7 +71,7 @@ $highlight-color: #5298af;
 
 .tabs-md .tab-button-icon,
 .tabs-ios .tab-button-icon {
-    color: #798194;
+    color: $light-font;
 }
 
 .tabs-md .tab-button[aria-selected=true] .tab-button-icon,

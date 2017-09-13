@@ -20,6 +20,7 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { MapPage } from '../pages/map/map';
 import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
+import { MarkersService } from '../pages/markers/markers-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -57,6 +58,7 @@ import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
     BaseService,
     GoogleMaps,
     FriendsService,
+    MarkersService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

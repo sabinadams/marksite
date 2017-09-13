@@ -1,72 +1,37 @@
 @import '../../app/app.scss';
-#map {
-    height: 100%;
-}
-
-ion-app._gmaps_cdv_ .nav-decor {
-    background-color: transparent !important;
-}
-
-ion-card-content,
-ion-avatar,
-.item-md {
-    background: $background-color;
-    padding-left: 2px;
-}
-
-.item-md {
-    padding-left: 12px;
-}
-
-.item-md ion-avatar ion-img,
-.item-md ion-avatar img {
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-}
-
-.searchbar-md {
-    background: rgba(0, 0, 0, 0);
-    padding: 0;
-}
-
-.searchbar-md .searchbar-input {
-    box-shadow: none;
-    background: $secondary-color;
-}
-
-.content-container {
-    padding: 0;
-}
-
-.list-md .item-block .item-inner {
-    border: 0;
-}
-
-ion-fab-list[side=left] {
-    margin: 0 66px 0 0;
-    right: 0;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-    -webkit-flex-direction: row-reverse;
-    -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-    width: 220px;
-}
-
-.list-md ion-item-options {
-    border-bottom: none;
-}
-
-.item-md h2 {
-    color: #d5d6d8;
-}
-
-.list-ios>.item-block:last-child,
-.list-ios>.item-wrapper:last-child .item-block {
-    border-bottom: 0;
-}
-
-.list-md ion-item-sliding {
-    background-color: $background-color;
+friends-page {
+    ion-avatar,
+    .item-md {
+        background: $secondary-color;
+        padding-left: 2px;
+    }
+    .item-md {
+        padding-left: 12px;
+        border-bottom: 2px solid $tertiary-color;
+    }
+    .item-md ion-avatar ion-img,
+    .item-md ion-avatar img {
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+    }
+    .content-container {
+        padding: 0;
+    }
+    .list-md .item-block .item-inner {
+        border: 0;
+    }
+    .list-md ion-item-options {
+        border-bottom: none;
+    }
+    .item-md h2 {
+        color: $light-font;
+    }
+    .list-ios>.item-block:last-child,
+    .list-ios>.item-wrapper:last-child .item-block {
+        border-bottom: 0;
+    }
+    .list-md ion-item-sliding {
+        background-color: $background-color;
+    }
 }

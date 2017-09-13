@@ -3,7 +3,7 @@ import { FriendsService } from './friends-service';
 import { Content } from 'ionic-angular';
 
 @Component({
-  selector: 'page-friends',
+  selector: 'friends-page',
   templateUrl: 'friends.html'
 })
 export class FriendsPage implements OnInit {

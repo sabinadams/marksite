@@ -1,3 +1,31 @@
-page-about {
-
+@import '../../app/app.scss';
+markers-page {
+    .scroll-content {
+        background: $secondary-color;
+    }
+    .marker-list {
+        padding: 10px;
+    }
+    .grid {
+        padding: 5px 0;
+    }
+    .action-list {
+        padding-top: 5px;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-grow: 1;
+        .button-md {
+            box-shadow: none;
+            border: none;
+            background: transparent;
+        }
+    }
+    .marker-item {
+        color: $light-font;
+        padding: 0;
+        border-bottom: 2px solid $tertiary-color;
+    }
 }
