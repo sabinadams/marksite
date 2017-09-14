@@ -21,10 +21,10 @@
                         <button class="action-button" ion-button icon-only>
                             <ion-icon name="pin"></ion-icon>
                         </button>
-                        <button class="action-button" ion-button icon-only>
+                        <button (click)="shareMarker(marker)" class="action-button" ion-button icon-only>
                             <ion-icon name="send"></ion-icon>
                         </button>
-                        <button class="action-button" ion-button icon-only>
+                        <button (click)="deleteMarker(marker)" class="action-button" ion-button icon-only>
                             <ion-icon name="trash"></ion-icon>
                         </button>
                     </div>

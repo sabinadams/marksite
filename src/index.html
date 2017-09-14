@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-
     <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4e8ef7">
@@ -32,6 +31,12 @@
 
     <!-- Ionic's root component and where the app will load -->
     <ion-app></ion-app>
+    <script>
+        function initMap() {
+            console.log("Map API Initialized");
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-5IX7wHUBHaM_MldiOCFcC9QAAdRGl-I&callback=initMap" async defer></script>
 
     <!-- The polyfills js is generated during the build process -->
     <script src="build/polyfills.js"></script>
