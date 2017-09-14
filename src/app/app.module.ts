@@ -22,6 +22,8 @@ import { MapPage } from '../pages/map/map';
 import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
 import { MarkersService } from '../pages/markers/markers-service';
+import { MapService } from '../pages/map/map-service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -61,6 +63,7 @@ import { MarkersService } from '../pages/markers/markers-service';
     FriendsService,
     MarkersService,
     Geolocation,
+    MapService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

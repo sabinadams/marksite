@@ -18,7 +18,7 @@
                     </ion-col>
 
                     <div class="action-list">
-                        <button class="action-button" ion-button icon-only>
+                        <button class="action-button" (click)="gotoMarker( marker )" ion-button icon-only>
                             <ion-icon name="pin"></ion-icon>
                         </button>
                         <button (click)="shareMarker(marker)" class="action-button" ion-button icon-only>

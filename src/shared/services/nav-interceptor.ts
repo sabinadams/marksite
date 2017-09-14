@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthGuard } from './auth-guard';
 import { LoginPage } from '../../pages/login/login';
+
 @Injectable()
 export class NavInterceptor {
   private navStream: any;
@@ -18,13 +19,13 @@ export class NavInterceptor {
   // app-container though, so there was no previous subscription. Observables aren't actually made until subscribed to
   navigate( page: any ) {
       if(this._authGuard.authenticated()) {
-        this.navStream.next( page );        
+        this.navStream.next( page, 'root' );        
       }
   }
 
   // For routing that shouldn't use authorization (Log out transition to login page)
   navigateUnprotected( page: any ) {
-    this.navStream.next( page );
+    this.navStream.next( page, 'root' );
   }
 
 }

@@ -18,11 +18,11 @@
                     <h2>{{friend.name}}</h2>
                 </ion-item>
                 <ion-item-options side="right">
-                    <button ion-button color="danger">
+                    <button ion-button color="danger" (click)="deleteFriend(friend)">
                       <ion-icon name="mail"></ion-icon>
                       Unfriend
                     </button>
-                    <button ion-button color="primary">
+                    <button ion-button color="primary" (click)="sendLocation(friend)">
                     <ion-icon name="mail"></ion-icon>
                     Send Location
                     </button>
