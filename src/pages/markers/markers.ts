@@ -49,16 +49,11 @@ export class MarkersPage implements OnInit{
       buttons: [
         {
           text: 'Nah, keep it',
-          handler: () => {
-            console.log('Keep clicked');
-          }
-        },
-        {
+          handler: () => { console.log('Keep clicked'); }
+        }, {
           text: 'Delete',
           cssClass: 'deleteButton',
-          handler: () => {
-            console.log('Delete clicked');
-          }
+          handler: () => { console.log('Delete clicked'); }
         }
       ]
     });

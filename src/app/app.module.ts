@@ -17,6 +17,7 @@ import { BaseService } from '../shared/services/base-service';
 import { HttpClient } from '../shared/services/http-interceptor';
 import { NavInterceptor } from '../shared/services/nav-interceptor';
 import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
 import { MapPage } from '../pages/map/map';
 import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
@@ -59,6 +60,7 @@ import { MarkersService } from '../pages/markers/markers-service';
     GoogleMaps,
     FriendsService,
     MarkersService,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
