@@ -1,1 +1,66 @@
-settings-page {}
+@import '../../app/app.scss';
+settings-page {
+    background: $tertiary-color;
+    .profile-pic-selector {
+        height: 150px;
+        width: 150px;
+        margin: auto;
+        border-radius: 100%;
+        border: 5px solid $tertiary-color;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        // background: url(http://placehold.it/200x200) no-repeat center center;
+    }
+    .top-container {
+        padding-top: 10px;
+        width: 100%;
+        height: 190px;
+        background: $secondary-color;
+    }
+    ion-segment,
+    .segment-md .segment-button {
+        height: 60px;
+        line-height: 6rem;
+        background: rgba(46, 47, 56, 0.6);
+        color: $light-font;
+    }
+    .item-md {
+        background: $background-color;
+        color: $light-font;
+        word-wrap: wrap;
+    }
+    .item-inner {
+        border: none !important;
+    }
+    .item-label-stacked .text-input-md,
+    .item-label-floating .text-input-md {
+        background: #2d2d37;
+        height: 50px;
+        padding: 10px;
+    }
+    .checkbox-md .checkbox-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: $tertiary-color;
+        border-color: $highlight-color;
+    }
+    .checkbox-md .checkbox-checked .checkbox-inner {
+        left: 12.5px;
+        top: 5px;
+        position: absolute;
+        width: 10px;
+        height: 20px;
+        border-width: 3px;
+        border-top-width: 0;
+        border-left-width: 0;
+        border-color: $highlight-color;
+    }
+    .item.item-md .checkbox-md {
+        margin: 10px;
+    }
+    .checkbox-md+.item-inner ion-label {
+        white-space: normal;
+    }
+}

@@ -79,7 +79,11 @@
     </platform>
     <allow-navigation href="http://192.168.1.4:8100" />
     <allow-navigation href="http://10.0.1.236:8100" />
+    <allow-navigation href="http://10.7.11.5:8100" />
     <engine name="ios" spec="4.5.0" />
+    <plugin name="com.synconset.imagepicker" spec="~2.1.8">
+        <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="Images on this device" />
+    </plugin>
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />

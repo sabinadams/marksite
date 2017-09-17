@@ -14,7 +14,6 @@ export class MapPage {
     mapOptions: any;
     constructor( public _navCtrl: NavInterceptor, private geolocation: Geolocation, private _mapService: MapService ) {
       this._mapService.$locationStream.subscribe( loc => {
-        console.log('Updated Location', loc);
         let newLocation = new google.maps.LatLng(loc.lat, loc.long);
         this.map.panTo( newLocation );
       });
@@ -39,12 +38,12 @@ export class MapPage {
       this.mapOptions = {
         zoom: 15,
         disableDefaultUI: true,
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-          mapTypeIds: ['roadmap', 'terrain'],
-          position: google.maps.ControlPosition.TOP_LEFT
-        },
+        // mapTypeControl: true,
+        // mapTypeControlOptions: {
+        //   style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+        //   mapTypeIds: ['roadmap', 'terrain'],
+        //   position: google.maps.ControlPosition.TOP_LEFT
+        // },
         styles: [
           {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
           {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -139,6 +138,7 @@ export class MapPage {
           }));
           let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
           this.map.panTo(latLng);
+          this.addListeners();  
           }).catch( error => {
             console.log('Error getting location', error);
           });
@@ -153,19 +153,21 @@ export class MapPage {
           }));
           this.mapOptions['center'] = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
           this.map = new google.maps.Map(this.mapElement.nativeElement, this.mapOptions);
+          this.addListeners();
           }).catch( error => {
             console.log('Error getting location', error);
           });
 
       }     
       
+    }
+  
+    addListeners() {
       this.map.addListener('click', e => {
         console.log( e.latLng.lat(), e.latLng.lng())
         this.placeMarkerAndPanTo(e.latLng, this.map);
       });
     }
-  
-    
   
     logout() {
         localStorage.removeItem('TestToken');

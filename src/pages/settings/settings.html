@@ -1,3 +1,86 @@
-<ion-content padding>
-    <h2>Settings</h2>
+<ion-content text-center>
+    <ion-fab top right>
+        <button ion-fab mini (tap)="choosePhoto()"><ion-icon name="camera"></ion-icon></button>
+        <!-- <ion-fab-list>
+            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+            <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list> -->
+    </ion-fab>
+    <div class="top-container">
+        <button style="background:transparent;">
+            <div class="profile-pic-selector"  [ngStyle]="{'background-image': photo.length ? 'url(' + photo + ')' : 'url(http://placehold.it/200x200)'}">
+    
+            </div>
+        </button>
+    </div>
+    <div>
+        <ion-segment [(ngModel)]="mode">
+            <ion-segment-button value="profile">
+                Edit Profile
+            </ion-segment-button>
+            <ion-segment-button value="security">
+                Security/Settings
+            </ion-segment-button>
+        </ion-segment>
+    </div>
+    <div [ngSwitch]="mode">
+        <div *ngSwitchCase="'security'">
+            <ion-item>
+                <ion-label>People can search for me</ion-label>
+                <ion-checkbox color="dark"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Others can see your location</ion-label>
+                <ion-checkbox color="dark"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Allow Push Notifications</ion-label>
+                <ion-checkbox color="dark"></ion-checkbox>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Allow caching (Better performance)</ion-label>
+                <ion-checkbox color="dark"></ion-checkbox>
+            </ion-item>
+        </div>
+
+        <div *ngSwitchCase="'profile'">
+            <!-- <h2>Edit Profile</h2> -->
+            <ion-list>
+
+                <ion-item>
+                    <ion-label stacked>Username</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>Tag</ion-label>
+                    <ion-input type="text"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label stacked>Password</ion-label>
+                    <ion-input type="password"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-segment>
+                        <ion-segment-button (click)="mode=false">
+                            Cancel
+                        </ion-segment-button>
+                        <ion-segment-button>
+                            Save
+                        </ion-segment-button>
+                    </ion-segment>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <!-- <button ion-button (click)="logout()">Logout</button> -->
+    <!-- <button ion-button (click)="choosePhoto()">Choose Photo</button> -->
+    <!-- <img *ngIf="photo.length" [src]="photo" /> {{ photo}} -->
+
 </ion-content>

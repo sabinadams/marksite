@@ -4,7 +4,6 @@ import { FriendsService } from '../friends/friends-service';
 import { MarkersService } from './markers-service';
 import { MapService } from '../map/map-service';
 import { NavInterceptor } from '../../shared/services/nav-interceptor';
-import { MapPage } from '../map/map';
 @Component({
   selector: 'markers-page',
   templateUrl: 'markers.html'
@@ -36,7 +35,7 @@ export class MarkersPage implements OnInit{
 
 
     alert.addButton({
-      text: 'Okay',
+      text: 'Ship it',
       handler: data => {
         console.log('Checkbox data:', data);
       }
@@ -54,7 +53,7 @@ export class MarkersPage implements OnInit{
           text: 'Nah, keep it',
           handler: () => { console.log('Keep clicked'); }
         }, {
-          text: 'Delete',
+          text: 'Do it!',
           cssClass: 'deleteButton',
           handler: () => { console.log('Delete clicked'); }
         }

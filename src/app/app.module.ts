@@ -23,6 +23,7 @@ import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
 import { MarkersService } from '../pages/markers/markers-service';
 import { MapService } from '../pages/map/map-service';
+import { ImagePicker } from '@ionic-native/image-picker';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MapService } from '../pages/map/map-service';
     GoogleMaps,
     FriendsService,
     MarkersService,
+    ImagePicker,
     Geolocation,
     MapService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

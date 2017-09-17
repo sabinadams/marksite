@@ -21,12 +21,8 @@ export class MyApp  {
       statusBar.styleDefault();
       splashScreen.hide();
       // Subscribes to the nav stream. Handles navigation after middleware authorizes
-      navInt.$navObserver.subscribe( data => {
-          switch( data.type ) {
-            case 'root':
-              this.navigate( data.page );
-              break;
-          }
+      navInt.$navObserver.subscribe( page => {
+        this.navigate( page );  
       });
       if( localStorage.getItem('TestToken') == null ) {
         this.rootPage = LoginPage;

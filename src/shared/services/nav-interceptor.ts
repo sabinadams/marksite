@@ -19,13 +19,13 @@ export class NavInterceptor {
   // app-container though, so there was no previous subscription. Observables aren't actually made until subscribed to
   navigate( page: any ) {
       if(this._authGuard.authenticated()) {
-        this.navStream.next( page, 'root' );        
+        this.navStream.next( page );        
       }
   }
 
   // For routing that shouldn't use authorization (Log out transition to login page)
   navigateUnprotected( page: any ) {
-    this.navStream.next( page, 'root' );
+    this.navStream.next( page );
   }
 
 }

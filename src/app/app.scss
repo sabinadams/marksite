@@ -55,8 +55,12 @@ $light-font: #798194;
 .tabs-md .tabbar,
 .tabs-ios .tabbar {
     background: $secondary-color;
-    border-bottom: 1px solid $background-color !important;
-    height: 70px;
+    // border-bottom: 1px solid $background-color !important;
+    height: 90px;
+}
+
+.tabs-md .tab-button-icon {
+    font-size: 2.8rem;
 }
 
 .tabs-ios .tabbar {
@@ -77,4 +81,10 @@ $light-font: #798194;
 .tabs-md .tab-button[aria-selected=true] .tab-button-icon,
 .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
     color: $highlight-color;
+}
+
+.fab-md-dark {
+    border-radius: 0;
+    color: #fff;
+    background-color: rgba(33, 34, 43, 0.82);
 }

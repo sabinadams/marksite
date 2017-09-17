@@ -34,7 +34,7 @@ export class FriendsPage implements OnInit {
           cssClass: 'deleteButton',
           handler: () => { console.log('Keep clicked'); }
         }, {
-          text: 'Bye!',
+          text: `Bye ${friend.name}!`,
           handler: () => { console.log('Delete clicked'); }
         }
       ]
