@@ -30,7 +30,7 @@ export class HttpClient {
     return this.http.get(url, { headers: headers }).map((res: Response) => {
       if ( res.json().status != 200 ) {
         console.log("The status code was not 200 (success). Validating session");
-        this.validateSession().subscribe(valid => {
+        this.validateSession(url).subscribe(valid => {
           console.log(`Valid: ${valid.value}`)
         });
       }
@@ -47,7 +47,7 @@ export class HttpClient {
     return this.http.post(url, data, { headers: headers }).map( (res: Response) => {
       if ( res.json().status != 200 ) {
         console.log("The status code was not 200 (success). Validating session");
-        this.validateSession().subscribe(valid => {
+        this.validateSession(url).subscribe(valid => {
           console.log(`Valid: ${valid.value}`)
         });
       }
@@ -62,7 +62,7 @@ export class HttpClient {
     return this.http.post(url, data).map( (res: Response) => {
       if ( res.json().status != 200 ) {
         console.log("The status code was not 200 (success). Validating session");
-        this.validateSession().subscribe(valid => {
+        this.validateSession(url).subscribe(valid => {
           console.log(`Valid: ${valid.value}`)
         });
       }
@@ -78,7 +78,7 @@ export class HttpClient {
     return this.http.get(url, { headers: headers }).map((res: Response) => {
       if ( res.json().status != 200 ) {
         console.log("The status code was not 200 (success). Validating session");
-        this.validateSession().subscribe(valid => {
+        this.validateSession(url).subscribe(valid => {
           console.log(`Valid: ${valid.value}`)
         });
       }
@@ -89,10 +89,12 @@ export class HttpClient {
   }
 
 
-  validateSession() {
+  validateSession(url) {
     if ( localStorage.getItem('token') == null ) {
-        console.log("No token found. Going to login")
-        this._navCtrl.navigateUnprotected( 'clear' );
+        console.log("No token found. Going to login");
+        if ( url != `${this._baseService.env.api}/auth/login`) {
+          this._navCtrl.navigateUnprotected( 'clear' );          
+        }
         return Observable.of(true);
     } else {
       console.log(`${this._baseService.env.api}/auth/validatesession`);
