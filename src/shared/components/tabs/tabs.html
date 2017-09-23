@@ -1,6 +1,6 @@
 <ion-tabs no-border>
-    <ion-tab [root]="tab1Root" tabIcon="globe"></ion-tab>
-    <ion-tab [root]="tab2Root" tabIcon="contacts"></ion-tab>
-    <ion-tab [root]="tab3Root" tabIcon="pin"></ion-tab>
-    <ion-tab [root]="tab4Root" tabIcon="cog"></ion-tab>
+    <ion-tab [root]="tab1Root" (ionSelect)="authGuard()" tabIcon="globe"></ion-tab>
+    <ion-tab [root]="tab2Root" (ionSelect)="authGuard()" tabIcon="contacts"></ion-tab>
+    <ion-tab [root]="tab3Root" (ionSelect)="authGuard()" tabIcon="pin"></ion-tab>
+    <ion-tab [root]="tab4Root" (ionSelect)="authGuard()" tabIcon="cog"></ion-tab>
 </ion-tabs>

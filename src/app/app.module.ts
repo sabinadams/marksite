@@ -1,5 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
@@ -35,10 +36,11 @@ import { ImagePicker } from '@ionic-native/image-picker';
     LoginPage,
     AppContainer,
     MapPage,
-    FriendFilter
+    FriendFilter,
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp, {tabsPlacement: 'top', tabsHighlight: true, mode:'md'})
   ],
   bootstrap: [IonicApp],

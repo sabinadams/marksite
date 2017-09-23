@@ -8,6 +8,6 @@ export class AuthGuard {
  // Returns whether the user is currently authenticated
  // Could check if current token is still valid
  authenticated() : boolean {
-   return localStorage.getItem('TestToken') != null ? true : false;;
+   return localStorage.getItem('token') != null ? true : false;;
  }
 }

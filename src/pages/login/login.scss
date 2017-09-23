@@ -1,0 +1,87 @@
+@import '../../app/app.scss';
+login-page {
+    .login-container {
+        max-height: 100%;
+        padding-top: 75px;
+    }
+    .app-logo {
+        margin: 0 auto;
+        height: 100px;
+    }
+    .form-container {
+        margin-top: 80px;
+        width: 100%;
+    }
+    .item-md {
+        background: $background-color;
+        color: $light-font;
+        word-wrap: wrap;
+        // border-bottom: 1px solid $light-font;
+        padding: 0;
+    }
+    .item-inner {
+        border: none !important;
+    }
+    .item-label-stacked .text-input-md,
+    .item-label-floating .text-input-md {
+        background: #2d2d37;
+        height: 50px;
+        padding: 10px;
+    }
+    .list-md .item-input:last-child,
+    .list-md .item-input {
+        border-bottom: none;
+    }
+    .list-md .item-input,
+    .list-md .item-input:last-child {
+        border-bottom: 0;
+    }
+    ion-label[fixed] {
+        min-width: 25px;
+        max-width: 25px;
+    }
+    ion-icon {
+        display: inline-block;
+        font-size: 2.4rem;
+    }
+    .item-md.item-input .item-inner,
+    .item-md.item-input:last-child .item-inner {
+        box-shadow: inset 0 -1px 0 0 $light-font;
+        color: $light-font;
+    }
+    .item-md.item-input.input-has-focus .item-inner,
+    .item-md.item-input:last-child.input-has-focus .item-inner {
+        padding: 0 5px;
+        transition: all 300ms ease-in;
+        box-shadow: inset 0 -1px 0 0 $highlight-color;
+        ion-icon {
+            color: $highlight-color;
+        }
+    }
+    .text-input::-moz-placeholder {
+        color: $light-font;
+    }
+    .text-input:-ms-input-placeholder {
+        color: $light-font;
+    }
+    .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: $light-font;
+    }
+    .button-md {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5298af+0,52afa3+100 */
+        background: #5298af;
+        /* Old browsers */
+        background: -moz-linear-gradient(left, #5298af 0%, #52afa3 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(left, #5298af 0%, #52afa3 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to right, #5298af 0%, #52afa3 100%);
+        color: white;
+        border-radius: 7px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    }
+    .forgot-password {
+        color: $highlight-color;
+    }
+}

@@ -24,7 +24,7 @@ export class MyApp  {
       navInt.$navObserver.subscribe( page => {
         this.navigate( page );  
       });
-      if( localStorage.getItem('TestToken') == null ) {
+      if( localStorage.getItem('token') == null ) {
         this.rootPage = LoginPage;
       } else {
         this.rootPage = AppContainer

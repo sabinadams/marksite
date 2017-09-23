@@ -1,12 +1,14 @@
 // My modified version of the Http service
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { BaseService } from './base-service';
+import { NavInterceptor } from './nav-interceptor';
+import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class HttpClient {
   http: any;
-  constructor(http: Http) {
+  constructor(http: Http, public _baseService: BaseService, public _navCtrl: NavInterceptor ) {
     this.http = http;
   }
 
@@ -22,21 +24,91 @@ export class HttpClient {
   }
 
   // Changes GET requests to always require the device token and Authorization headers
-  get(url) {
+  secureGet(url) {
     const headers = new Headers({ 'Accept': 'application/json' });
     this.createAuthorizationHeader(headers);
-    return this.http.get(url, { headers: headers }).catch(( error: any ) => {
+    return this.http.get(url, { headers: headers }).map((res: Response) => {
+      if ( res.json().status != 200 ) {
+        console.log("The status code was not 200 (success). Validating session");
+        this.validateSession().subscribe(valid => {
+          console.log(`Valid: ${valid.value}`)
+        });
+      }
+      return res;
+    }).catch(( error: any ) => {
         this.killSession(error);
     });
   }
 
   // Changes POST requests to always require the device token and Authorization headers
-  post(url, data) {
+  securePost(url, data) {
     const headers = new Headers();
     this.createAuthorizationHeader(headers);
-    return this.http.post(url, data, { headers: headers }).catch(( error: any ) => {
+    return this.http.post(url, data, { headers: headers }).map( (res: Response) => {
+      if ( res.json().status != 200 ) {
+        console.log("The status code was not 200 (success). Validating session");
+        this.validateSession().subscribe(valid => {
+          console.log(`Valid: ${valid.value}`)
+        });
+      }
+      return res; 
+    })
+    .catch(( error: any ) => {
+        this.killSession(error);
+    });
+  }
+  
+  post(url, data) {
+    return this.http.post(url, data).map( (res: Response) => {
+      if ( res.json().status != 200 ) {
+        console.log("The status code was not 200 (success). Validating session");
+        this.validateSession().subscribe(valid => {
+          console.log(`Valid: ${valid.value}`)
+        });
+      }
+      return res;    
+    })
+    .catch(( error: any ) => {
         this.killSession(error);
     });
   }
 
+  get(url) {
+    const headers = new Headers({ 'Accept': 'application/json' });
+    return this.http.get(url, { headers: headers }).map((res: Response) => {
+      if ( res.json().status != 200 ) {
+        console.log("The status code was not 200 (success). Validating session");
+        this.validateSession().subscribe(valid => {
+          console.log(`Valid: ${valid.value}`)
+        });
+      }
+      return res;
+    }).catch(( error: any ) => {
+        this.killSession(error);
+    });
+  }
+
+
+  validateSession() {
+    if ( localStorage.getItem('token') == null ) {
+        console.log("No token found. Going to login")
+        this._navCtrl.navigateUnprotected( 'clear' );
+        return Observable.of(true);
+    } else {
+      console.log(`${this._baseService.env.api}/auth/validatesession`);
+      return this.http.post(`${this._baseService.env.api}/auth/validatesession`, { token: localStorage.getItem('token')}).map((res: Response) => {
+        let body = res.json();
+        if (!body.valid) {
+          console.log("Not a valid session. Logging out...");
+          this._navCtrl.navigateUnprotected( 'clear' );
+          return Observable.of( false );
+        }  else {
+          console.log("Valid session but non-successful status code. Must have been an authorization/authentication/user error ")
+          return Observable.of( true);
+        }
+      }).catch( (error: any) => {
+        this.killSession(error);
+      });
+    }
+  }
 }

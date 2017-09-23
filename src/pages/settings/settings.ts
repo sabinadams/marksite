@@ -8,10 +8,15 @@ import { ImagePicker } from '@ionic-native/image-picker';
 })
 export class SettingsPage {
   photo: any = '';
+  mode = false;
   constructor( private _navCtrl: NavInterceptor,private imagePicker: ImagePicker ) {
     
   }
   
+  ionViewDidLeave() {
+    console.log('Test');
+    this.mode = false;
+  }
   logout() {
     localStorage.removeItem('TestToken');
     this._navCtrl.navigateUnprotected('clear');

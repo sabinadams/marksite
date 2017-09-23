@@ -14,9 +14,13 @@ export class LoginPage {
   }
   
   // Send to Home Page
-  login() {
-    var loggedIn = this._authService.login();
-    console.log(loggedIn)
-    if ( loggedIn ) this.navCtrl.navigate( AppContainer );
+  login( email, password ) {
+     this._authService.login( email, password ).subscribe( res => {
+       if ( res.status == 200 && res.userdata.logged_in ) {
+         this.navCtrl.navigate( AppContainer );
+       } else {
+         // Handle an error 
+       }
+     });
   }
 }

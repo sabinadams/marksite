@@ -1,9 +1,33 @@
 <ion-content>
-    <ion-list>
-        <ion-list-header>Login</ion-list-header>
-        <button ion-button icon-left (click)="login()">
-            <ion-icon name="home"></ion-icon>
-            Login
-        </button>
-    </ion-list>
+    <div class="login-container">
+        <ion-grid>
+            <ion-row>
+                <img src="https://newrelic.com/assets/newrelic/source/NewRelic-logo-square-w.png" class="app-logo" alt="">
+            </ion-row>
+            <ion-row padding>
+                <div class="form-container" text-center>
+                    <ion-list padding>
+
+                        <ion-item>
+                            <ion-label fixed>
+                                <ion-icon name="mail"></ion-icon>
+                            </ion-label>
+                            <ion-input placeholder="Email" type="text" value="" [(ngModel)]="email"></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label fixed>
+                                <ion-icon name="lock"></ion-icon>
+                            </ion-label>
+                            <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+                        </ion-item>
+
+                    </ion-list>
+                    <button ion-button block (click)="login(email, password)">Log In</button>
+                    <br>
+                    <a class="forgot-password">Forgot Password?</a>
+                </div>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>
