@@ -22,10 +22,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { MapPage } from '../pages/map/map';
 import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
-import { MarkersService } from '../pages/markers/markers-service';
-import { MapService } from '../pages/map/map-service';
+import { MapService } from '../shared/services/map-service';
 import { ImagePicker } from '@ionic-native/image-picker';
-
+import { MapModalPage } from '../pages/map/modal-page/modal-page';
 @NgModule({
   declarations: [
     MyApp,
@@ -37,6 +36,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     AppContainer,
     MapPage,
     FriendFilter,
+    MapModalPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +52,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     TabsPage,
     AppContainer,
     LoginPage,
-    MapPage
+    MapPage,
+    MapModalPage
   ],
   providers: [
     StatusBar,
@@ -64,7 +65,6 @@ import { ImagePicker } from '@ionic-native/image-picker';
     BaseService,
     GoogleMaps,
     FriendsService,
-    MarkersService,
     ImagePicker,
     Geolocation,
     MapService,

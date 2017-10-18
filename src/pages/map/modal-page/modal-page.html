@@ -1,0 +1,11 @@
+<ion-content class="main-view">
+    <div class="overlay" (click)="closeModal()"></div>
+    <div class="modal_content">
+        <p>
+            {{ memo }}
+        </p>
+        <img *ngIf="image" [src]="image" alt="">
+
+        <button (click)="deleteMarker()">Delete</button>
+    </div>
+</ion-content>

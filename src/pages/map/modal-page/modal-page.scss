@@ -1,0 +1,36 @@
+@import '../../../app/app.scss';
+map-info-modal {
+    .main-view {
+        background: transparent;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: .5;
+        background-color: transparent;
+    }
+    .scroll-content {
+        background: rgba(0, 0, 0, 0.5) !important;
+    }
+    .modal_content {
+        color: $light-font;
+        position: absolute;
+        top: calc(50% - (50%/2));
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 50%;
+        padding: 10px;
+        z-index: 100;
+        margin: 0 auto;
+        box-shadow: 0 2px 3px rgba(51, 51, 51, .35);
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        overflow: hidden;
+        background: $secondary-color;
+    }
+}

@@ -1,10 +1,7 @@
 Security Settings
 Profile Picture
-Add markers to database
-Show markers that are yours
 Friends
 Sharing Marker with Friends
 Creating accounts
 Forgot Password with email verification
-Deleting markers
 Send location to friend
