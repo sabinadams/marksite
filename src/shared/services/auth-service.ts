@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class AuthService extends BaseService {
-
+ // Test
  constructor( public navCtrl: NavInterceptor, public _http: HttpClient ) { super(); }
 
  // Creates randomized UUID Token for authentication
@@ -24,7 +24,9 @@ export class AuthService extends BaseService {
  login( email: string, password: string ) {
     let data = { email: email, password: password, token: localStorage.getItem('token') || this._generateToken() };
     return this._http.post(`${this.env.api}/auth/login`, data).map(( res: Response ) => {
-       const res_data = res.json();
+      let res_data;
+      try { res_data = res.json(); } 
+      catch( error ) { return res_data = { userdata: { logged_in: false, status: 401 } }; }
        if ( res_data.userdata.logged_in ) {
          localStorage.setItem( 'user', JSON.stringify( res_data.userdata ) );
          localStorage.setItem( 'token', res_data.userdata.token );
@@ -40,4 +42,13 @@ export class AuthService extends BaseService {
      this.navCtrl.navigateUnprotected( LoginPage );
  }
  
+ updateUser( data ) {
+     return this._http.securePost(`${this.env.api}/auth/update`, data).map(( res: Response ) => {
+          let response = res.json();
+          if ( response.valid ) {
+            localStorage.setItem('user', JSON.stringify(Object.assign({}, JSON.parse(localStorage.getItem('user')), response.userdata)));
+          }
+          return response;
+     })
+ }
 }

@@ -20,7 +20,8 @@ export class HttpClient {
   // We don't necessarily want to log a user out and send them to login screen if something doesn't load correctly.
   killSession(error){
     // Send you home
-    console.log( 'Session Killed', error );
+    // console.log( 'Session Killed', error );
+    return Observable.of( false );
   }
 
   // Changes GET requests to always require the device token and Authorization headers
@@ -36,7 +37,7 @@ export class HttpClient {
       }
       return res;
     }).catch(( error: any ) => {
-        this.killSession(error);
+        return this.killSession(error);
     });
   }
 
@@ -54,7 +55,7 @@ export class HttpClient {
       return res; 
     })
     .catch(( error: any ) => {
-        this.killSession(error);
+        return this.killSession(error);
     });
   }
   
@@ -69,7 +70,7 @@ export class HttpClient {
       return res;    
     })
     .catch(( error: any ) => {
-        this.killSession(error);
+        return this.killSession(error);
     });
   }
 
@@ -84,7 +85,7 @@ export class HttpClient {
       }
       return res;
     }).catch(( error: any ) => {
-        this.killSession(error);
+        return this.killSession(error);
     });
   }
 
@@ -109,7 +110,7 @@ export class HttpClient {
           return Observable.of( true);
         }
       }).catch( (error: any) => {
-        this.killSession(error);
+        return this.killSession(error);
       });
     }
   }

@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation';
 import { NavInterceptor } from '../../shared/services/nav-interceptor';
 import { MapService } from './map-service';
+import { AuthService } from '../../shared/services/auth-service';
+import { AlertController } from 'ionic-angular';
 
 declare var google;
 @Component({
@@ -12,7 +14,7 @@ export class MapPage {
     @ViewChild('map') mapElement: ElementRef;
     map: any;
     mapOptions: any;
-    constructor( public _navCtrl: NavInterceptor, private geolocation: Geolocation, private _mapService: MapService ) {
+    constructor(  private _alertCtrl: AlertController, public _navCtrl: NavInterceptor, private geolocation: Geolocation, private _mapService: MapService, public _authService: AuthService ) {
       this._mapService.$locationStream.subscribe( loc => {
         let newLocation = new google.maps.LatLng(loc.lat, loc.long);
         this.map.panTo( newLocation );
@@ -25,25 +27,40 @@ export class MapPage {
     }
      
     placeMarkerAndPanTo(latLng, map) {
-      let marker = new google.maps.Marker({
-        position: latLng,
-        map: map
+      let prompt = this._alertCtrl.create({
+        title: 'Place Marker?',
+        inputs: [
+          {
+            name: 'memo',
+            placeholder: 'Reminder/Memo',
+            type: 'text'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: () => {  console.log("Cancelled Save")}
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              let marker = new google.maps.Marker({
+                position: latLng,
+                map: map
+              });
+              let newLocation = new google.maps.LatLng(latLng.lat(), latLng.lng());
+              map.panTo(newLocation);
+            }
+          }
+        ]
       });
-      let newLocation = new google.maps.LatLng(latLng.lat(), latLng.lng());
-      map.panTo(newLocation);
+      prompt.present();
     }
 
     loadMap(){
-    
       this.mapOptions = {
         zoom: 15,
         disableDefaultUI: true,
-        // mapTypeControl: true,
-        // mapTypeControlOptions: {
-        //   style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-        //   mapTypeIds: ['roadmap', 'terrain'],
-        //   position: google.maps.ControlPosition.TOP_LEFT
-        // },
         styles: [
           {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
           {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -142,8 +159,6 @@ export class MapPage {
           }).catch( error => {
             console.log('Error getting location', error);
           });
-
-
       } else {
 
         this.geolocation.getCurrentPosition().then((resp) => {
@@ -157,21 +172,19 @@ export class MapPage {
           }).catch( error => {
             console.log('Error getting location', error);
           });
-
       }     
       
     }
   
     addListeners() {
       this.map.addListener('click', e => {
-        console.log( e.latLng.lat(), e.latLng.lng())
+        // Popup with detail adding/confirmation
         this.placeMarkerAndPanTo(e.latLng, this.map);
       });
     }
   
     logout() {
-        localStorage.removeItem('TestToken');
-        this._navCtrl.navigateUnprotected('clear');
+        this._authService.logout();
     }
 
 }

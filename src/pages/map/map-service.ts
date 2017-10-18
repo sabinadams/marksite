@@ -12,16 +12,16 @@ export class MapService extends BaseService {
     constructor(  private geolocation: Geolocation ) { super(); }
     
     locationPoll() {
-        setInterval(() => {
-            this.geolocation.getCurrentPosition().then((resp) => {
-              localStorage.setItem('last_location', JSON.stringify({
-                lat: resp.coords.latitude,
-                long: resp.coords.longitude
-              }));
-             }).catch((error) => {
-               console.log('Error getting location', error);
-             });
-          }, 60000);
+      setInterval(() => {
+        this.geolocation.getCurrentPosition().then((resp) => {
+          localStorage.setItem('last_location', JSON.stringify({
+            lat: resp.coords.latitude,
+            long: resp.coords.longitude
+          }));
+          }).catch((error) => {
+            console.log('Error getting location', error);
+          });
+      }, 60000);
     }
 
     updateLocation( loc: CurrentLocation ) {
