@@ -5,3 +5,7 @@ Sharing Marker with Friends
 Creating accounts
 Forgot Password with email verification
 Send location to friend
+Global Error Service
+"No Data" messages for empty lists
+Style Marker Modal
+User Color Picker

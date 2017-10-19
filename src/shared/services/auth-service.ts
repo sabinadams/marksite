@@ -22,6 +22,7 @@ export class AuthService extends BaseService {
   }
 
  login( email: string, password: string ) {
+    console.log(localStorage.getItem('token') || this._generateToken())
     let data = { email: email, password: password, token: localStorage.getItem('token') || this._generateToken() };
     return this._http.post(`${this.env.api}/auth/login`, data).map(( res: Response ) => {
       let res_data;
