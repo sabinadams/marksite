@@ -28,6 +28,46 @@ markers-page {
         padding: 0;
         border-bottom: 2px solid $tertiary-color;
     }
+    ion-avatar,
+    .item-md {
+        background: $secondary-color;
+        padding-left: 2px;
+    }
+    .item-md {
+        padding-left: 12px;
+        border-bottom: 2px solid $tertiary-color;
+    }
+    .item-md ion-avatar ion-img,
+    .item-md ion-avatar img {
+        border-radius: 50%;
+        width: 65px;
+        height: 65px;
+    }
+    .content-container {
+        padding: 0;
+    }
+    .list-md .item-block .item-inner {
+        border: 0;
+    }
+    .list-md ion-item-options {
+        border-bottom: none;
+    }
+    .item-md h2 {
+        color: $light-font;
+    }
+    .list-ios>.item-block:last-child,
+    .list-ios>.item-wrapper:last-child .item-block {
+        border-bottom: 0;
+    }
+    .list-md ion-item-sliding {
+        background-color: $background-color;
+    }
+    .list-md .item-input:last-child {
+        border-bottom: none;
+    }
+    .list-md {
+        margin: 0 !important;
+    }
 }
 
 .alert-md .alert-wrapper {

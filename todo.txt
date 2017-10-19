@@ -9,3 +9,4 @@ Global Error Service
 "No Data" messages for empty lists
 Style Marker Modal
 User Color Picker
+Re-Try native map

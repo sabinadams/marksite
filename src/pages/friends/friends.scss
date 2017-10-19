@@ -34,4 +34,18 @@ friends-page {
     .list-md ion-item-sliding {
         background-color: $background-color;
     }
+    .list-md .item-input:last-child {
+        border-bottom: 2px solid $tertiary-color;
+    }
+    .list-md {
+        margin: 0 !important;
+    }
+    .button-md.addFriendButton {
+        background: $tertiary-color !important;
+        color: $light-font;
+        border: none;
+        box-shadow: none;
+        margin: 0;
+        height: 40px;
+    }
 }

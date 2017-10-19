@@ -40,8 +40,9 @@ export class MapService extends BaseService {
   
     newMarker( data: Marker ) {
       return this._http.securePost(`${this.env.api}/markers/new`, data ).map( res => {
-        if ( res.valid ) {
-          this.updateMarkers('add', res.marker );
+        let resp = res.json();
+        if ( resp.valid ) {
+          this.updateMarkers('add', resp.marker );
         } else {
           // Error thingy
         }
