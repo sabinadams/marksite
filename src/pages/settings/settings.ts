@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NavInterceptor } from '../../shared/services/nav-interceptor';
-import { ImagePicker } from '@ionic-native/image-picker';
 import { AlertController } from 'ionic-angular';
 import { AuthService } from '../../shared/services/auth-service';
 @Component({
@@ -11,8 +9,8 @@ export class SettingsPage {
   photo: any = '';
   mode = false;
   user = JSON.parse(localStorage.getItem('user'));
-  
-  constructor( private _authService: AuthService, private _alertCtrl: AlertController, private _navCtrl: NavInterceptor,private imagePicker: ImagePicker ) {}
+  message = null;
+  constructor( private _authService: AuthService, private _alertCtrl: AlertController ) {}
   
 
   pureForm = {
@@ -30,23 +28,11 @@ export class SettingsPage {
   };
 
   ionViewDidLeave() {
-    console.log('Test');
     this.mode = false;
   }
 
   logout() {
-    localStorage.removeItem('TestToken');
-    this._navCtrl.navigateUnprotected('clear');
-  }
-
-  choosePhoto() {
-    this.imagePicker.getPictures({}).then((results) => {
-      for (var i = 0; i < results.length; i++) {
-          console.log('Image URI: ' + results[i]);
-          this.photo = results[i];
-      }
-    }, (err) => { 
-    });
+   this._authService.logout();
   }
   
   formChange( type ) {
@@ -118,7 +104,10 @@ export class SettingsPage {
         this.mode = false;
         this.user = JSON.parse(localStorage.getItem('user'));
       } else {
-        // Error message thingy
+        this.message = res.message;
+        setTimeout(() => {
+          this.message = null;
+        }, 3000);
       }
 
     });

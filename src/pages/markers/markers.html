@@ -11,14 +11,12 @@
         <div class="marker-item" *ngFor="let marker of markers | friendFilter:markerQuery:['memo', 'date']">
             <ion-grid>
                 <ion-row>
-                    <ion-col col-7>
-                        <p> {{ marker.memo }} </p>
-                        <small>{{marker.date | date:'dd/MM/yy'}}</small>
-                    </ion-col>
-                    <ion-col col-5>
-                        <img class="img-responsive" [src]="marker.img || 'http://placehold.it/100x100'" />
-                    </ion-col>
-
+                    <p> {{ marker.memo }} </p>
+                </ion-row>
+                <ion-row>
+                    <small>{{marker.date | date:'dd/MM/yy'}}</small>
+                </ion-row>
+                <ion-row>
                     <div class="action-list">
                         <button class="action-button" (click)="gotoMarker( marker )" ion-button icon-only>
                             <ion-icon name="pin"></ion-icon>
@@ -32,6 +30,9 @@
                     </div>
                 </ion-row>
             </ion-grid>
+        </div>
+        <div *ngIf="!markers?.length" class="no-markers">
+            <p>You don't have any markers!</p>
         </div>
     </div>
 </ion-content>

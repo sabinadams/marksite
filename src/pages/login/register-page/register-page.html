@@ -1,0 +1,39 @@
+<ion-content class="main-view">
+    <div class="overlay" (click)="closeModal()"></div>
+    <div class="modal_content">
+        <div class="register-container" text-center padding>
+            <h2 class="header-label">Create Account</h2>
+            <p class="error_message" *ngIf="error_message != null">{{error_message}}</p>
+            <ion-list padding>
+                <ion-item>
+                    <ion-label fixed>
+                        <ion-icon name="mail"></ion-icon>
+                    </ion-label>
+                    <ion-input placeholder="Email" type="text" value="" [(ngModel)]="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>
+                        <ion-icon name="at"></ion-icon>
+                    </ion-label>
+                    <ion-input placeholder="Tag" type="text" [(ngModel)]="tag"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label fixed>
+                        <ion-icon name="lock"></ion-icon>
+                    </ion-label>
+                    <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label fixed>
+                        <ion-icon name="lock"></ion-icon>
+                    </ion-label>
+                    <ion-input placeholder="Repeat Password" type="password" [(ngModel)]="repeat_password"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <button ion-button block (click)="createAccount()">Ready!</button>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

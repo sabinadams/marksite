@@ -1,21 +1,8 @@
 <ion-content text-center>
-    <ion-fab top right>
-        <button ion-fab mini (tap)="choosePhoto()"><ion-icon name="camera"></ion-icon></button>
-    </ion-fab>
-    <div class="top-container">
-        <button style="background:transparent;">
-            <div class="profile-pic-selector"  [ngStyle]="{'background-image': photo.length ? 'url(' + photo + ')' : 'url(http://placehold.it/200x200)'}">
-    
-            </div>
-        </button>
-    </div>
     <div>
         <ion-segment [(ngModel)]="mode">
             <ion-segment-button value="profile">
                 Edit Profile
-            </ion-segment-button>
-            <ion-segment-button value="security">
-                Security/Settings
             </ion-segment-button>
         </ion-segment>
     </div>
@@ -39,10 +26,7 @@
                     <ion-input clearOnEdit="false" (keyup)="formChange( 'password' )" [(ngModel)]="newForm.password" type="password"></ion-input>
                     <ion-label stacked *ngIf="!pureForm.password"> * Will need to verify password upon submit</ion-label>
                 </ion-item>
-
-                <!-- There should be something that requires current password and confirm password 
-                    after you hit "save" if the password field was modified -->
-
+                <p class="error_message" *ngIf="message != null">{{message}}</p>
                 <ion-item>
                     <ion-segment>
                         <ion-segment-button (ionSelect)="mode=false">
@@ -56,34 +40,6 @@
             </ion-list>
         </div>
 
-        <div *ngSwitchCase="'security'">
-            <ion-item>
-                <ion-label>People can search for me</ion-label>
-                <ion-checkbox color="dark"></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Others can see your location</ion-label>
-                <ion-checkbox color="dark"></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Allow Push Notifications</ion-label>
-                <ion-checkbox color="dark"></ion-checkbox>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Allow caching (Better performance)</ion-label>
-                <ion-checkbox color="dark"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-                <ion-segment>
-                    <ion-segment-button (click)="mode=false">
-                        Back
-                    </ion-segment-button>
-                </ion-segment>
-            </ion-item>
-        </div>
 
         <div *ngSwitchCase="false">
             <ion-list>
@@ -96,8 +52,13 @@
                     <ion-input type="text" value="@{{user.tag}}" disabled></ion-input>
                 </ion-item>
                 <ion-item>
-                    <button ion-button block (click)="logout()">Log Out</button>
+                    <ion-label stacked>Email</ion-label>
+                    <ion-input type="email" value="@{{ user.email }}" disabled></ion-input>
                 </ion-item>
+                <ion-item>
+                    <button class="logout-button" ion-button block (click)="logout()">Log Out</button>
+                </ion-item>
+
             </ion-list>
         </div>
     </div>

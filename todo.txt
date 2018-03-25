@@ -1,12 +1,3 @@
-Security Settings
-Profile Picture
-Friends
-Sharing Marker with Friends
-Creating accounts
-Forgot Password with email verification
-Send location to friend
-Global Error Service
-"No Data" messages for empty lists
-Style Marker Modal
-User Color Picker
-Re-Try native map
+Global Notification Service for success, error messages
+UI Cleanup
+    Change Marker Alert Input to Modal for better mobile styling

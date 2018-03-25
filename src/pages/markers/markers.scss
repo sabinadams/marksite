@@ -4,13 +4,15 @@ markers-page {
         background: $secondary-color;
     }
     .marker-list {
-        padding: 10px;
+        padding: 10px 15px;
     }
     .grid {
         padding: 5px 0;
     }
     .action-list {
         padding-top: 5px;
+        margin-top: 10px;
+        margin-bottom: 5px;
         height: 30px;
         display: flex;
         flex-direction: row;
@@ -119,4 +121,10 @@ markers-page {
     border-left-width: 0;
     border-style: solid;
     border-color: rgba(30, 31, 39, 0.8);
+}
+
+.no-markers {
+    text-align: center;
+    font-weight: bolder;
+    color: $light-font;
 }

@@ -52,4 +52,25 @@ export class AuthService extends BaseService {
           return response;
      })
  }
+
+ createAccount( email, password, password_repeat, tag) {
+    return this._http.securePost(`${this.env.api}/auth/register`, {email, password, password_repeat, tag}).map( res => {
+      let response = res.json();
+      return response;
+    })
+ }
+
+ sendForgotEmail( email ) {
+   return this._http.securePost(`${this.env.api}/auth/initiatepassreset`, {email}).map( res => {
+     let response = res.json();
+     return response;
+   })
+ }
+
+ resetPassword( code, pass, passConf ) {
+   return this._http.securePost(`${this.env.api}/auth/resetpass`, { code: code, data: { newPass:  pass, newPassConfirm: passConf}}).map( res => {
+     let response = res.json();
+     return response;
+   })
+ }
 }

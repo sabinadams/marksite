@@ -1,14 +1,11 @@
 <ion-content>
     <ion-fab right bottom>
-        <button ion-fab color="dark"><ion-icon name="arrow-dropleft"></ion-icon></button>
-        <ion-fab-list side="left">
-            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-            <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-            <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-        </ion-fab-list>
+        <button ion-fab color="dark" (click)="centerMap();"><ion-icon name="globe"></ion-icon></button>
     </ion-fab>
+    <div *ngIf="centering" class="overlay">
+        <h2 class="loadingmessage">Getting Location...</h2>
+    </div>
     <div #map id="map" style="z-index:500; height:100%;">
-        <h2 style="text-align:center; ">Getting Location...</h2>
+        <h2 class="loadingmessage">Getting Location...</h2>
     </div>
 </ion-content>

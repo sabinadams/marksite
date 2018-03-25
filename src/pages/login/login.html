@@ -20,11 +20,13 @@
                             </ion-label>
                             <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
                         </ion-item>
+                        <p class="error_message" *ngIf="message != null">{{message}}</p>
 
                     </ion-list>
                     <button ion-button block (click)="login(email, password)">Log In</button>
+                    <button ion-button block (click)="openRegisterModal()">Create Account</button>
                     <br>
-                    <a class="forgot-password">Forgot Password?</a>
+                    <a class="forgot-password" (click)="openForgotPassModal()">Forgot Password?</a>
                 </div>
             </ion-row>
         </ion-grid>

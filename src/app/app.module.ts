@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 
 import { SettingsPage } from '../pages/settings/settings';
 import { MarkersPage } from '../pages/markers/markers';
-import { FriendsPage } from '../pages/friends/friends';
 import { TabsPage } from '../shared/components/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AppContainer } from '../shared/components/app-container/app-container';
@@ -20,23 +19,25 @@ import { NavInterceptor } from '../shared/services/nav-interceptor';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MapPage } from '../pages/map/map';
-import { FriendsService } from '../pages/friends/friends-service';
 import { FriendFilter } from '../shared/pipes/friend-filter-pipe';
 import { MapService } from '../shared/services/map-service';
-import { ImagePicker } from '@ionic-native/image-picker';
 import { MapModalPage } from '../pages/map/modal-page/modal-page';
+import { RegisterPage } from '../pages/login/register-page/register-page';
+import { ForgotPasswordPage } from '../pages/login/forgot-password/forgot-password';
+
 @NgModule({
   declarations: [
     MyApp,
     MarkersPage,
-    FriendsPage,
     SettingsPage,
     TabsPage,
     LoginPage,
     AppContainer,
     MapPage,
     FriendFilter,
-    MapModalPage
+    MapModalPage,
+    RegisterPage,
+    ForgotPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -47,13 +48,14 @@ import { MapModalPage } from '../pages/map/modal-page/modal-page';
   entryComponents: [
     MyApp,
     MarkersPage,
-    FriendsPage,
     SettingsPage,
     TabsPage,
     AppContainer,
     LoginPage,
     MapPage,
-    MapModalPage
+    MapModalPage,
+    RegisterPage,
+    ForgotPasswordPage
   ],
   providers: [
     StatusBar,
@@ -64,8 +66,6 @@ import { MapModalPage } from '../pages/map/modal-page/modal-page';
     AuthService,
     BaseService,
     GoogleMaps,
-    FriendsService,
-    ImagePicker,
     Geolocation,
     MapService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

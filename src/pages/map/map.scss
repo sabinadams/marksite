@@ -1,0 +1,16 @@
+@import '../../app/app.scss';
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+h2.loadingmessage {
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    color: $light-font;
+}

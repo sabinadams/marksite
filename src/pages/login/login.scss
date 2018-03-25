@@ -1,5 +1,7 @@
 @import '../../app/app.scss';
-login-page {
+login-page,
+register-page,
+forgot-password-page {
     .login-container {
         max-height: 100%;
         padding-top: 75px;
@@ -83,5 +85,8 @@ login-page {
     }
     .forgot-password {
         color: $highlight-color;
+    }
+    .error_message {
+        color: rgb(213, 77, 77);
     }
 }

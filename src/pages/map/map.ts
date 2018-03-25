@@ -16,6 +16,7 @@ declare var google;
 })
 export class MapPage {
     @ViewChild('map') mapElement: ElementRef;
+    centering = false;
     map: any;
     markers = [];
     mapOptions = {
@@ -102,8 +103,16 @@ export class MapPage {
         }
       ]
     };
+  
 
-    constructor( private _modalCtrl: ModalController, private _alertCtrl: AlertController, public _navCtrl: NavInterceptor, private geolocation: Geolocation, private _mapService: MapService, public _authService: AuthService ) {
+    // Should also get markers from local storage first. Place those markers, then add in any extras grabbed from DB. (Loop through DB res to find new ones/remove old ones)
+    // This is so that the markers show up right away rather than having to wait for response from server
+    constructor( 
+      private _modalCtrl: ModalController, 
+      private _alertCtrl: AlertController, public _navCtrl: NavInterceptor, 
+      private geolocation: Geolocation, 
+      private _mapService: MapService, public _authService: AuthService 
+    ) {
       this._mapService.$locationStream.subscribe( loc => {
         let newLocation = new google.maps.LatLng(loc.lat, loc.long);
         this.map.panTo( newLocation );
@@ -248,5 +257,19 @@ export class MapPage {
       });
       return newLatLng;
     }
-
+  
+    centerMap() {
+      this.centering = true;
+      // Now get the actual current position of the user
+      this.geolocation.getCurrentPosition().then( resp => {
+        // If you had defaulted to a position, pan to the new position
+        let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+        this.map.panTo(latLng);
+        //Initialize listeners and user's markers
+        this.centering = false;
+      }).catch( error => {
+        this.centering = false;
+        console.log('Error getting location', error);
+      })
+    }
 }

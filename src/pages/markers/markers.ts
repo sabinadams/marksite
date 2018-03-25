@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, Tabs, NavController } from 'ionic-angular';
-import { FriendsService } from '../friends/friends-service';
 import { MapService } from '../../shared/services/map-service';
 import { NavInterceptor } from '../../shared/services/nav-interceptor';
+
 @Component({
   selector: 'markers-page',
   templateUrl: 'markers.html'
 })
 export class MarkersPage implements OnInit{
   markers: any;
-  constructor( public nav: NavController, public alertCtrl: AlertController, public _mapService: MapService, public _friendsService: FriendsService, public _navCtrl: NavInterceptor ) {}
+  constructor( public nav: NavController, public alertCtrl: AlertController, public _mapService: MapService, public _navCtrl: NavInterceptor ) {}
   
   ngOnInit() {
       this._mapService.getMarkers().subscribe( res => {
@@ -31,18 +31,16 @@ export class MarkersPage implements OnInit{
   shareMarker( marker ) {
     let alert = this.alertCtrl.create();
     alert.setTitle('Share with friends');
-    let friends = this._friendsService.getFriends();
-    for ( let friend of friends ) {
       alert.addInput({
-        type: 'checkbox',
-        label: friend.name,
-        value: friend.id.toString()
+        name: 'tag',
+        placeholder: `Enter user's tag`
       });
-    }
     alert.addButton({
       text: 'Ship it',
       handler: data => {
-        console.log('Checkbox data:', data);
+        this._mapService.sendMarkerToUser( marker.ID, data ).subscribe( res => {
+          console.log(res);
+        })
       }
     });
     alert.present();
@@ -61,8 +59,7 @@ export class MarkersPage implements OnInit{
           cssClass: 'deleteButton',
           handler: () => { 
             this._mapService.deleteMarker( marker ).subscribe( res => {
-              console.log(res);
-              // Handle Error Message
+              
             }); 
           }
         }

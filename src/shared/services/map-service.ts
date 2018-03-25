@@ -37,7 +37,8 @@ export class MapService extends BaseService {
     getLocation(): CurrentLocation {
       return this.currentLocation;
     }
-  
+    
+    // Should also add marker to localstorage
     newMarker( data: Marker ) {
       return this._http.securePost(`${this.env.api}/markers/new`, data ).map( res => {
         let resp = res.json();
@@ -50,7 +51,9 @@ export class MapService extends BaseService {
       });
     }
     
+
     getMarkers() {
+      // Should save markers to local storage
       return this._http.secureGet(`${this.env.api}/markers`).map( data => {
         let resp = data.json();
         if ( resp.valid ) {
@@ -62,6 +65,7 @@ export class MapService extends BaseService {
       });
     }
     
+    // Should delete from local storage as well
     deleteMarker( data ) {
      return this._http.securePost(`${this.env.api}/markers/delete`, {ID: data.ID}).map( res => {
        let resp = res.json();
@@ -73,7 +77,20 @@ export class MapService extends BaseService {
        return resp;
      })
     }
+
     updateMarkers( type, marker ) {
       this.markerEvent.next({type, marker});
+    }
+
+    sendMarkerToUser( markerID, tagQuery ) {
+      return this._http.securePost(`${this.env.api}/markers/send`, { marker: markerID, tag: tagQuery.tag}).map( res => {
+        console.log(res.json())
+        if ( res.valid ) {
+          return res.json();
+        } else {
+          // Error thingy
+        }
+        
+      });
     }
 }
